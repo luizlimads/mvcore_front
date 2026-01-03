@@ -75,7 +75,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
-import { authService } from '@/services/authService';
+import { authService } from '@/services/auth.service';
 import { requiredRule, comparePasswordRule, hasNumberRule, hasLetterRule, minLengthRule } from '@/validators';
 
 const router = useRouter();

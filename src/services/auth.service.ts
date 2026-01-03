@@ -1,7 +1,7 @@
 
 import apiClient from '@/api/apiClient';
 import { ENDPOINTS } from '@/constants/endpoints';
-import { accessService } from './accessService';
+import { accessService } from './access.service';
 import type { AuthResponse } from '@/type';
 import { useUserStore } from '@/stores';
 

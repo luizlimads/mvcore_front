@@ -32,7 +32,7 @@
 <script setup lang="ts">
   import { ref, defineExpose } from 'vue';
   import { emailRule } from '@/validators';
-  import { authService } from '@/services/authService';
+  import { authService } from '@/services/auth.service';
 
   const props = defineProps<{ email: string }>();
   const emit = defineEmits(['success']);

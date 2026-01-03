@@ -86,7 +86,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { authService } from '@/services/authService';
+import { authService } from '@/services/auth.service';
 import { useAlertStore } from '@/stores/alertStore'
 import { requiredRule } from '@/validators';
 import RecoverPasswordModal from '@/components/modal/RecoverPasswordModal.vue';

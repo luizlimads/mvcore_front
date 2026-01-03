@@ -1,7 +1,7 @@
 
 import axios, { type InternalAxiosRequestConfig } from 'axios';
 import { ENDPOINTS } from '../constants/endpoints';
-import { accessService as accessService } from '@/services/accessService';
+import { accessService as accessService } from '@/services/access.service';
 import router from '@/router';
 
 const apiClient = axios.create();
