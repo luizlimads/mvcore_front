@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-  import { useUserStore, useSnackbarStore } from '@/stores';
+  import { useUsuarioStore, useSnackbarStore } from '@/stores';
   import { SYSTEM_MESSAGES } from '@/constants/messages';
-  import { userService } from '@/services';
+  import { usuarioService } from '@/services';
   import { parseApiError } from '@/utils/apiErrorParser';
 
   const props = defineProps<{
@@ -27,7 +27,7 @@
   const dialogModal = defineModel<boolean>({ required: true });
 
   const snackbarDataStore = useSnackbarStore();
-  const userStore = useUserStore();
+  const userStore = useUsuarioStore();
 
   const itemName = computed(() => {
     if (!props.item) return '';
@@ -39,9 +39,9 @@
     if (!props.item || !props.item.id) return;
 
     try {
-      await userService.delete(props.item.id);
+      await usuarioService.delete(props.item.id);
       snackbarDataStore.showSnackbar(SYSTEM_MESSAGES.SUCCESS.DELETE_USER, 'success');
-      await userStore.fetchAllUsers(true);
+      await userStore.fetchAllUsuarios(true);
     } catch (apiError) {
       const friendlyErrorMessage = parseApiError(apiError)
       snackbarDataStore.showSnackbar(friendlyErrorMessage, 'error');

@@ -66,11 +66,11 @@
   import { storeToRefs } from 'pinia';
 
   import EditUserModal from '@/components/modal/EditUserModal.vue'
-  import { userService } from '@/services';
+  import { usuarioService } from '@/services';
   import { useFormatters } from '@/composables/useFormatters';
-  import { useUserStore } from '@/stores';
+  import { useUsuarioStore } from '@/stores';
   
-  const userDataStore = useUserStore();
+  const userDataStore = useUsuarioStore();
   const { users, myUser } = storeToRefs(userDataStore);
   
   const dialogEdit = ref(false);
@@ -123,8 +123,8 @@
     const originalStatus = item.is_active === 'Ativo' ? true : false;
     const newStatus = !originalStatus;
     try {
-      await userService.updateStatus(item.id, newStatus);
-      await userDataStore.fetchAllUsers(true)
+      await usuarioService.updateStatus(item.id, newStatus);
+      await userDataStore.fetchAllUsuarios(true)
     } catch (error) {
       item.is_active = originalStatus ? 'Ativo' : 'Inativo';
     }

@@ -46,7 +46,7 @@
   import { ref } from 'vue';
   import { storeToRefs } from 'pinia';
   
-  import { useTenantStore, useErpStore } from '@/stores';
+  import { useTenantStore, useSistemaIntegradoStore } from '@/stores';
   import EditTenantModal from '@/components/modal/EditTenantModal.vue'
   import { useFormatters } from '@/composables/useFormatters';
   import { VALIDATION_CONSTANTS } from '@/constants/validators';
@@ -56,7 +56,7 @@
   const { tenants } = storeToRefs(tenantDataStore);
   const { getTenantDisplayName, formatDate } = useFormatters();
 
-  const erpDataStore = useErpStore();
+  const erpDataStore = useSistemaIntegradoStore();
   const { erps } = storeToRefs(erpDataStore);
   
   const dialogEdit = ref(false);

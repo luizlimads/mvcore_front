@@ -28,10 +28,10 @@
   import { storeToRefs } from 'pinia';
   import type { VForm } from 'vuetify/components';
 
-  import { userService } from '@/services';
-  import { useTenantStore, useUserStore, useSnackbarStore } from '@/stores';
+  import { usuarioService } from '@/services';
+  import { useTenantStore, useUsuarioStore, useSnackbarStore } from '@/stores';
   import { baseFields, createFields } from '@/form-configs/user-form'; 
-  import type { FormField, FormConfig, User } from "@/type"
+  import type { FormField, FormConfig, Usuario } from "@/type"
   import { SYSTEM_MESSAGES } from '@/constants/messages';
   import { parseApiError } from '@/utils/apiErrorParser';
   import { VALIDATION_CONSTANTS } from '@/constants/validators';
@@ -43,7 +43,7 @@
       required: true
     },
     initialData: {
-      type: Object as PropType<User | null>,
+      type: Object as PropType<Usuario | null>,
       default: null
     },
     isEditMode: {
@@ -55,7 +55,7 @@
   const tenantDataStore = useTenantStore();
   const { tenants } = storeToRefs(tenantDataStore);
   
-  const userDataStore = useUserStore();
+  const userDataStore = useUsuarioStore();
   const { myUser } = storeToRefs(userDataStore);
   
   const snackbarDataStore = useSnackbarStore();
@@ -86,7 +86,7 @@
     Object.keys(formData).forEach(key => delete formData[key]);
 
     formConfig.value.fields.forEach(field => {
-      formData[field.key] = props.initialData?.[field.key as keyof User] ?? null;
+      formData[field.key] = props.initialData?.[field.key as keyof Usuario] ?? null;
     });
   }
 
@@ -103,14 +103,14 @@
     loading.value = true;
     try {
       if(props.isEditMode) {
-        await userService.update(props.initialData?.id, formData);
+        await usuarioService.update(props.initialData?.id, formData);
         snackbarDataStore.showSnackbar(SYSTEM_MESSAGES.SUCCESS.UPDATE_USER, 'success');
       } else {
-        await userService.create(formData);
+        await usuarioService.create(formData);
         snackbarDataStore.showSnackbar(SYSTEM_MESSAGES.SUCCESS.CREATE_USER, 'success');
       }
       if(myUser.value?.id === props.initialData?.id) await userDataStore.fetchMyUser(true);
-      await userDataStore.fetchAllUsers(true);
+      await userDataStore.fetchAllUsuarios(true);
 
       dialogModal.value = false;
     } catch (apiError: any) {

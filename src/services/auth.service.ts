@@ -3,7 +3,7 @@ import apiClient from '@/api/apiClient';
 import { ENDPOINTS } from '@/constants/endpoints';
 import { accessService } from './access.service';
 import type { AuthResponse } from '@/type';
-import { useUserStore } from '@/stores';
+import { useUsuarioStore } from '@/stores';
 
 export const authService = {
   async login(credentials: object): Promise<boolean> {
@@ -14,7 +14,7 @@ export const authService = {
       if (access) accessService.saveAccess(access);
       if (refresh) accessService.saveRefresh(refresh);
 
-      const userStore = useUserStore();
+      const userStore = useUsuarioStore();
       await userStore.fetchMyUser();
 
       return true;

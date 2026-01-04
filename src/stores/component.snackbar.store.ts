@@ -14,5 +14,5 @@ export const useSnackbarStore = defineStore('snackbar', () => {
     show.value = true;
   }
 
-  return { show, text, color, showSnackbar };
+  return { show, text, color, showSnackbar: showSnackbar };
 });

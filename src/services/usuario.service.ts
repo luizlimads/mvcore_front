@@ -1,34 +1,34 @@
 import apiClient from '@/api/apiClient';
 import { ENDPOINTS } from '@/constants/endpoints';
-import type { ApiResponse, SetPassword, User } from '@/type';
+import type { ApiResponse, SetPassword, Usuario } from '@/type';
 
-export const userService = {
-  async fetchAll(): Promise<ApiResponse<User[]>> {
-    const response = await apiClient.get<User[]>(ENDPOINTS.USUARIO);
+export const usuarioService = {
+  async fetchAll(): Promise<ApiResponse<Usuario[]>> {
+    const response = await apiClient.get<Usuario[]>(ENDPOINTS.USUARIO);
     return { data: response.data, status: response.status };
   },
 
-  async fetch(id: string | undefined): Promise<ApiResponse<User>> {
+  async fetch(id: string | undefined): Promise<ApiResponse<Usuario>> {
     if (!id) throw new Error("ID do usuário é necessário.");
-    const response = await apiClient.get<User>(`${ENDPOINTS.USUARIO}${id}/`);
+    const response = await apiClient.get<Usuario>(`${ENDPOINTS.USUARIO}${id}/`);
     return { data: response.data, status: response.status };
   },
 
-  async create(data: object): Promise<ApiResponse<User>> {
-    const response = await apiClient.post<User>(ENDPOINTS.USUARIO, data);
+  async create(data: object): Promise<ApiResponse<Usuario>> {
+    const response = await apiClient.post<Usuario>(ENDPOINTS.USUARIO, data);
     return { data: response.data, status: response.status };
   },
 
-  async update(id: string | null | undefined, data: object): Promise<ApiResponse<User>> {
+  async update(id: string | null | undefined, data: object): Promise<ApiResponse<Usuario>> {
     if (!id) throw new Error("ID do usuário é necessário.");
-    const response = await apiClient.patch<User>(`${ENDPOINTS.USUARIO}${id}/`, data);
+    const response = await apiClient.patch<Usuario>(`${ENDPOINTS.USUARIO}${id}/`, data);
     return { data: response.data, status: response.status };
   },
 
-  async updateStatus(id: string, status: boolean): Promise<ApiResponse<User>> {
+  async updateStatus(id: string, status: boolean): Promise<ApiResponse<Usuario>> {
     if (!id) throw new Error("ID do usuário é necessário.");
     const data = { "is_active":status }
-    const response = await apiClient.patch<User>(`${ENDPOINTS.USUARIO}${id}/`, data);
+    const response = await apiClient.patch<Usuario>(`${ENDPOINTS.USUARIO}${id}/`, data);
     return { data: response.data, status: response.status };
   },
 
@@ -44,8 +44,8 @@ export const userService = {
     return { data: response.data, status: response.status };
   },
 
-  async fetchMe(): Promise<ApiResponse<User>> {
-    const response = await apiClient.get<User>(ENDPOINTS.USER_ME);
+  async fetchMe(): Promise<ApiResponse<Usuario>> {
+    const response = await apiClient.get<Usuario>(ENDPOINTS.USER_ME);
     return { data: response.data, status: response.status };
   },
 

@@ -17,7 +17,7 @@
 </template>
   
   <script lang="ts" setup>
-  import { useSnackbarStore } from '@/stores/snackbarStore';
+  import { useSnackbarStore } from '@/stores/component.snackbar.store';
   import { storeToRefs } from 'pinia';
   
   const snackbarStore = useSnackbarStore();

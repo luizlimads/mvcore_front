@@ -15,10 +15,10 @@
   <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import { storeToRefs } from 'pinia';
-  import { useErpStore } from '@/stores';
+  import { useSistemaIntegradoStore } from '@/stores';
   import dayjs from 'dayjs'
 
-  const erpDataStore = useErpStore();
+  const erpDataStore = useSistemaIntegradoStore();
   const { erps } = storeToRefs(erpDataStore);
 
   const carregando = computed(() => erps.value.length === 0);

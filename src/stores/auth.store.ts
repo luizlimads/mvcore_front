@@ -1,18 +1,16 @@
 import { defineStore } from 'pinia';
 import { useRouter } from 'vue-router';
 
-import { authService } from '@/services';
-
-import { useUserStore, useTenantStore, useErpStore } from '@/stores';
+import { useUsuarioStore, useTenantStore, useSistemaIntegradoStore } from '@/stores';
 
 export const useAuthStore = defineStore('auth', () => {
   const router = useRouter();
 
   async function logout() {
 
-    const userStore = useUserStore();
+    const userStore = useUsuarioStore();
     const tenantStore = useTenantStore();
-    const erpStore = useErpStore();
+    const erpStore = useSistemaIntegradoStore();
 
     userStore.resetState();
     tenantStore.resetState();
@@ -20,7 +18,6 @@ export const useAuthStore = defineStore('auth', () => {
 
     await router.replace('/');
   }
-
 
   return { logout };
 });

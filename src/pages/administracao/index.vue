@@ -56,8 +56,8 @@
 <script setup lang="ts">
   import { storeToRefs } from 'pinia';
 
-  import { useTenantStore, useUserStore, useSnackbarStore } from '@/stores';
-  import { userService } from '@/services';
+  import { useTenantStore, useUsuarioStore, useSnackbarStore } from '@/stores';
+  import { usuarioService } from '@/services';
   import { useFormatters } from '@/composables/useFormatters';
   import { parseApiError } from '@/utils/apiErrorParser';
   import { SYSTEM_MESSAGES } from '@/constants/messages';
@@ -65,7 +65,7 @@
   const tenantDataStore = useTenantStore();
   const { tenants } = storeToRefs(tenantDataStore);
 
-  const userDataStore = useUserStore();
+  const userDataStore = useUsuarioStore();
   const { myUser } = storeToRefs(userDataStore);
 
   const snackbarDataStore = useSnackbarStore();
@@ -83,7 +83,7 @@
     if (!isValid?.valid) return;
 
     try {
-      await userService.update(myUser.value?.id, formData);
+      await usuarioService.update(myUser.value?.id, formData);
       snackbarDataStore.showSnackbar(SYSTEM_MESSAGES.SUCCESS.UPDATE_TENANT, 'success');
       await userDataStore.fetchMyUser(true);
     } catch (apiError: any) {

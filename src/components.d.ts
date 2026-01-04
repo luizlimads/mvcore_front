@@ -39,6 +39,7 @@ declare module 'vue' {
     Sidebar: typeof import('./components/default/Sidebar.vue')['default']
     SimpleDonutChart: typeof import('./components/SimpleDonutChart.vue')['default']
     SummaryCard: typeof import('./components/dashboard/SummaryCard.vue')['default']
+    SummaryCard3: typeof import('./components/SummaryCard3.vue')['default']
     SummaryCardV2: typeof import('./components/dashboard/SummaryCardV2.vue')['default']
     SystemTable: typeof import('./components/SystemTable.vue')['default']
     TabelaComparativa: typeof import('./components/TabelaComparativa.vue')['default']

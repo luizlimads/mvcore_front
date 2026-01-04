@@ -1,6 +1,6 @@
 import apiClient from '@/api/apiClient';
 import { ENDPOINTS } from '@/constants/endpoints';
-import type { ApiResponse, Tenant } from '@/type';
+import type { ApiResponse, Tenant, SistemaIntegrado } from '@/type';
 
 export const tenantService = {
   async fetchAll(): Promise<ApiResponse<Tenant[]>> {
@@ -24,4 +24,12 @@ export const tenantService = {
     const response = await apiClient.delete<void>(`${ENDPOINTS.TENANT}${id}/`);
     return { data: response.data, status: response.status };
   },
+};
+
+export const sistemaIntegradoService = {
+  async fetchAll(): Promise<ApiResponse<SistemaIntegrado[]>> {
+    const response = await apiClient.get<SistemaIntegrado[]>(ENDPOINTS.SISTEMA_INTEGRADO);
+    return { data: response.data, status: response.status };
+  },
+
 };

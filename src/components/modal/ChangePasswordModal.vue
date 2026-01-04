@@ -25,10 +25,10 @@
 
 <script lang="ts" setup>
   import type { VForm } from 'vuetify/components';
-  import { userService } from '@/services';
+  import { usuarioService } from '@/services';
   import { useSnackbarStore } from '@/stores';
   import { baseFields, editFields } from '@/form-configs/password-form';
-  import type { FormField, FormConfig, User } from "@/type"
+  import type { FormField, FormConfig, Usuario } from "@/type"
   import { comparePasswordRule } from '@/validators';
   import { parseApiError } from '@/utils/apiErrorParser';
  
@@ -44,7 +44,7 @@
       required: true
     },
     initialData: {
-      type: Object as PropType<User | null>,
+      type: Object as PropType<Usuario | null>,
       default: null
     },
     isEditMode: {
@@ -136,7 +136,7 @@
     type SnackbarColor = 'success' | 'error' | 'warning' | 'info';
     const snackbarColor = ref<SnackbarColor>('success');
     try {
-      response = await userService.updatePassword(formData);
+      response = await usuarioService.updatePassword(formData);
       message = SYSTEM_MESSAGES.SUCCESS.UPDATE_PASSWORD
       snackbarColor.value = 'success'
       dialogModal.value = false;

@@ -30,11 +30,11 @@
 <script setup lang="ts">
   import { storeToRefs } from 'pinia';
 
-  import { useAuthStore ,useUserStore } from '@/stores';
+  import { useAuthStore ,useUsuarioStore } from '@/stores';
   import { authService } from '@/services'
   import { useFormatters } from '@/composables/useFormatters';
 
-  const userStore = useUserStore();
+  const userStore = useUsuarioStore();
   const authStore = useAuthStore();
   const { getTenantDisplayName } = useFormatters()
 

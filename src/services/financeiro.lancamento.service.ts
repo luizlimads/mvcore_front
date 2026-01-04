@@ -8,3 +8,14 @@ export const lancamentoService = {
     return { data: response.data, status: response.status };
   },
 };
+
+// Teste
+export function getFinanceiroResumo() {
+  return {
+    meses: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+
+    receitas: [3000, 3200, 3100, 3500, 3700, 4000],
+    despesas: [2000, 2500, 2800, 3000, 3200, 3500],
+    saldo: [1000, 2300, 2800, 3500, 4200, 5000],
+  }
+}

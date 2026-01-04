@@ -39,9 +39,9 @@
 
 <script setup lang="ts">
 
-  import { useUserStore } from '@/stores';
+  import { useUsuarioStore } from '@/stores';
   import FiltroPeriodoAvancado from '../FiltroPeriodoAvancado.vue';
-  const userStore = useUserStore();
+  const userStore = useUsuarioStore();
   const { myUser } = storeToRefs(userStore);
 
   const navItems = [

@@ -9,7 +9,7 @@ import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { routes } from 'vue-router/auto-routes'
 import { accessService } from '@/services/access.service';
-import { useAlertStore, useUserStore } from '@/stores'
+import { useAlertStore, useUsuarioStore } from '@/stores'
 import { SYSTEM_MESSAGES } from '@/constants/messages';
 
 const PUBLIC_ROUTES = [
@@ -67,7 +67,7 @@ router.beforeEach(async (to, from, next) => {
     return next({ path: '/' });
   }
 
-  const userStore = useUserStore();
+  const userStore = useUsuarioStore();
   
   try {
     if (!userStore.myUser) {

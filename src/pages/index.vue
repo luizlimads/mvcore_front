@@ -87,7 +87,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { authService } from '@/services/auth.service';
-import { useAlertStore } from '@/stores/alertStore'
+import { useAlertStore } from '@/stores/component.alert.store'
 import { requiredRule } from '@/validators';
 import RecoverPasswordModal from '@/components/modal/RecoverPasswordModal.vue';
 

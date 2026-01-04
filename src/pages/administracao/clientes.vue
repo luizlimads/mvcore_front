@@ -16,12 +16,12 @@
   import { useRouter } from 'vue-router';
 
   import TenantTable from '@/components/TenantTable.vue';
-  import { useTenantStore, useErpStore, useUserStore, useSnackbarStore } from '@/stores';
+  import { useTenantStore, useSistemaIntegradoStore, useUsuarioStore, useSnackbarStore } from '@/stores';
   import { SYSTEM_MESSAGES } from '@/constants/messages';
   
   const tenantDataStore = useTenantStore();
-  const erpDataStore = useErpStore();
-  const userDataStore = useUserStore();
+  const erpDataStore = useSistemaIntegradoStore();
+  const userDataStore = useUsuarioStore();
   const snackbarDataStore = useSnackbarStore();
 
   const router = useRouter();
@@ -30,8 +30,8 @@
     async () => {
       try {
       await tenantDataStore.fetchAllTenants();
-      await erpDataStore.fetchAllErps();
-      await userDataStore.fetchAllUsers();
+      await erpDataStore.fetchAllSistemasIntegrados();
+      await userDataStore.fetchAllUsuarios();
       } catch (error) {
         snackbarDataStore.showSnackbar(SYSTEM_MESSAGES.ERROR.SERVER_UNAVAILABLE, 'error');      
       }

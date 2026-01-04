@@ -29,7 +29,7 @@
   import type { VForm } from 'vuetify/components';
 
 import { tenantService } from '@/services';
-import { useErpStore, useTenantStore, useUserStore , useSnackbarStore } from '@/stores';
+import { useSistemaIntegradoStore, useTenantStore, useUsuarioStore , useSnackbarStore } from '@/stores';
 import { baseFields, systemSpecificFields } from '@/form-configs/tenant-form'; 
 import { VALIDATION_CONSTANTS } from '@/constants/validators';
 import { parseApiError } from '@/utils/apiErrorParser';
@@ -52,13 +52,13 @@ const props = defineProps({
   }
 });
 
-  const erpDataStore = useErpStore();
+  const erpDataStore = useSistemaIntegradoStore();
   const { erps } = storeToRefs(erpDataStore);
 
   const tenantDataStore = useTenantStore();
   const { tenants } = storeToRefs(tenantDataStore);
 
-  const userDataStore = useUserStore();
+  const userDataStore = useUsuarioStore();
 
   const snackbarDataStore = useSnackbarStore();
 
@@ -137,7 +137,7 @@ const props = defineProps({
       dialogModal.value = false;
       snackbarDataStore.showSnackbar(message, 'success');
       await tenantDataStore.fetchAllTenants(true);
-      await userDataStore.fetchAllUsers(true);
+      await userDataStore.fetchAllUsuarios(true);
       await userDataStore.fetchMyUser(true);
     } catch (apiError: any) {
       const friendlyErrorMessage = parseApiError(apiError)

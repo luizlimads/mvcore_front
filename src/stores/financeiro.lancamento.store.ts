@@ -8,7 +8,6 @@ export const useLancamentoStore = defineStore('lancamento', () => {
     const lancamentos = ref<Lancamento[]>([]);
     const entradas = ref<number[]>([]);
     const saidas = ref<number[]>([]);
-    const saldo = ref<number[]>([]);
 
     async function fetchAllLancamentos(force: boolean = false, dataInicio: string, dataFim: string) {
         if (lancamentos.value.length > 0 && !force) return;
@@ -17,7 +16,7 @@ export const useLancamentoStore = defineStore('lancamento', () => {
         lancamentos.value = response.data;
         handleLancamentos(lancamentos.value)
         } catch (error) {
-        console.error("Erro ao buscar lancamentos:", error);
+        console.error("Erro ao buscar lançamentos:", error);
         }
     }
 
@@ -34,7 +33,6 @@ export const useLancamentoStore = defineStore('lancamento', () => {
 
     }
 
-
     function resetState() {
         lancamentos.value = [];
     }
@@ -44,5 +42,4 @@ export const useLancamentoStore = defineStore('lancamento', () => {
         entradas,
         fetchAllLancamentos,
         resetState };
-
 });

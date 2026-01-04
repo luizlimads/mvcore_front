@@ -73,13 +73,13 @@ import { computed, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 
 
-import { useUserStore, useSnackbarStore } from '@/stores';
+import { useUsuarioStore, useSnackbarStore } from '@/stores';
 import ChangePasswordModal from '@/components/modal/ChangePasswordModal.vue';
 import { useFormatters } from '@/composables/useFormatters';
 import EditUserModal from '@/components/modal/EditUserModal.vue';
 import { SYSTEM_MESSAGES } from '@/constants/messages';
 
-const userDataStore = useUserStore();
+const userDataStore = useUsuarioStore();
 const { myUser } = storeToRefs(userDataStore);
 const snackbarDataStore = useSnackbarStore();
 
